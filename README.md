@@ -4,7 +4,7 @@ The purpose of this repo is to one day create a python module for simulating dif
 
 ## Current 1-D models supported:
 
- Markup : - Slab
+ Markup : -Slab
               - Slab
               - Mean
           - Cylinder
