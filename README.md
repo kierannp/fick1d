@@ -1,4 +1,4 @@
-# Fick1d
+# fick1d
 The purpose of this repo is to one day create a python module for simulating solid state diffusion in solid state.
 
 
@@ -11,8 +11,10 @@ The purpose of this repo is to one day create a python module for simulating sol
  - Thin Film
 
 ## Installation
+'''
+git clone 
 
-
+'''
 
 
 
