@@ -1,4 +1,4 @@
-# Fick2ndSimulate
+# Fick1d
 The purpose of this repo is to one day create a python module for simulating diffusion in solid state.
 
 
