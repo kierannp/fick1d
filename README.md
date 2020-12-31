@@ -2,16 +2,22 @@
 The purpose of this repo is to one day create a python module for simulating diffusion in solid state.
 
 
-Usage:
+## Current 1-D models supported:
 
-import ficks1D
+ Markup : - Slab
+              - Slab
+              - Mean
+          - Cylinder
+          - Sphere
+          - Diffusion Couple
+          - Thin Film
 
-ficks1D.sphere
-ficks1D.slab
-ficks1D.cylinder
 
 
-slab thin sphere
+
+
+
+
 
 Ficks second law of diffusion in one-dimension is defined as:
 
