@@ -1,25 +1,26 @@
 # Fick1d
-The purpose of this repo is to one day create a python module for simulating diffusion in solid state.
+The purpose of this repo is to one day create a python module for simulating solid state diffusion in solid state.
 
 
 ## Current 1-D models supported:
 
  - Slab
-     - Sub Slab
-     - Sub Mean
  - Cylinder
  - Sphere
  - Diffusion Couple
  - Thin Film
 
+## Installation
 
 
 
 
 
 
+## Math Behind Models
 
 Ficks second law of diffusion in one-dimension is defined as:
+
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;C}{\partial&space;t}=D\frac{\partial^2&space;C}{\partial&space;x^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;C}{\partial&space;t}=D\frac{\partial^2&space;C}{\partial&space;x^2}" title="\frac{\partial C}{\partial t}=D\frac{\partial^2 C}{\partial x^2}" /></a>
 
