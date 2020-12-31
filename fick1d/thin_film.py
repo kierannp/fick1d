@@ -14,7 +14,7 @@ def thin_film(T, X, D, c0, b, xstep = 1000 ):
     for count_t,t in enumerate(T):
         for count_x,x in enumerate(np.linspace(-X,X,xstep)):
             total[count_t,count_x]=c0*(b/2)*np.exp(-x**2/(4*D*t))/np.sqrt(np.pi*D*t)
-    return np.linspace(-X,X,xstep),total
+    return total
 # def both_thin(T, Xlow, Xhi, D, c0, cb, b, xstep = 1000):
 #     tCrit=((2/b)**-2)/(np.pi*D)
 #     total = np.zeros((len(T), xstep))
@@ -28,13 +28,13 @@ def thin_film(T, X, D, c0, b, xstep = 1000 ):
 
 #         return total,tCrit
 
-def early_thin_film(T, Xlow, Xhi, cs, c0, D, xstep = 1000, Xoff = 0):
+def early_thin_film(T, D, X, cs, c0, xstep = 1000, Xoff = 0):
     total_pos = np.zeros((len(T), xstep))
     total_neg = total_pos
     for count_t, t in enumerate(T):
-        for count_x, x in enumerate(np.linspace(Xlow, Xhi, xstep)):
+        for count_x, x in enumerate(np.linspace(-X, X, xstep)):
             total_pos[count_t, count_x] = (c0-cs)*(erf((x+1)/np.sqrt(4*D*t)))+cs
     for count_t, t in enumerate(T):
-        for count_x, x in enumerate(np.linspace(Xlow, Xhi, xstep)):
-            total2[count_t, count_x] = -(c0-cs)*(erf((x-1)/np.sqrt(4*D*t)))+cs
+        for count_x, x in enumerate(np.linspace(-X, X, xstep)):
+            total_neg[count_t, count_x] = -(c0-cs)*(erf((x-1)/np.sqrt(4*D*t)))+cs
     return total_pos, total_neg

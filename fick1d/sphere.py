@@ -1,5 +1,23 @@
 from numpy import exp,pi,sin,array,linspace, zeros
 
+def sum_value(args, tol, fun, startn = 0):
+    n = startn
+    curr_sum = 0
+    args['n'] = n
+    while(True):
+        term = fun(args)
+        prev_sum = curr_sum
+        curr_sum += term
+        n += 1
+        args['n'] = n
+        try:
+            delta = abs(prev_sum - curr_sum) 
+        except:
+            break
+        if (delta < tol) :
+            break
+    return curr_sum
+
 def mean(T, R, D, c1, c0, tol = .00001):
     ''' 
     T :list ints of times to sample
@@ -9,12 +27,13 @@ def mean(T, R, D, c1, c0, tol = .00001):
     c0: constant conentration at surface
     tol : .1% auto tolerance 
     '''
-    total=zeros((len(T)))
+    def sphere_mean(d):
+        return  (exp(-d['D']*d['t']*((d['n']*pi)/d['R'])**2))/d['n']**2
+
+    total = zeros((len(T)))
     for count_t,t in enumerate(T):
-        sum=0
-        for n in range(1,N+1):
-            sum += (exp(-D*t*((n*pi)/R)**2))/n**2
-        total[count_t] = sum
+        dic = {'D' : D, 't' : t, 'R' : R}
+        total[count_t] = sum_value(dic, tol = tol, fun = sphere_mean, startn = 1)
     return (c0-c1)*(1 + 2*total) + c1
 
 def sphere( T, R, D, c1, c0, tol = .00001, rstep = 1000):     
@@ -27,15 +46,12 @@ def sphere( T, R, D, c1, c0, tol = .00001, rstep = 1000):
     c0: constant conentration at surface
     tol : .1% auto tolerance 
     '''
+    def sphere_series(d):
+        return ( (-1)**d['n']/d['n'] ) * sin((d['n']*pi*x)/d['R']) * exp(-d['D']*d['n']**2*pi**2*t/d['R']**2)
+    
     total = zeros((len(T),rstep))
     for count_t,t in enumerate(T):
         for count_x,x in enumerate(linspace(0,R,rstep)):
-            n = 0
-            term = ( (-1)**n/n ) * sin((n*pi*x)/R) * exp(-D*n**2*pi**2*t/R**2)
-            curr_sum = term
-            while( abs(term) > tol):
-                n += 1
-                term = ( (-1)**n/n ) * sin((n*pi*x)/R) * exp(-D*n**2*pi**2*t/R**2)
-                curr_sum += term
-            total[count_t,count_x] = curr_sum
-    return linspace(0,R,rstep), (c0-c1)*(1+((2*R)/(pi*x))*total)+c1
+            dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
+            total[count_t,count_x] = sum_value(dic, tol = tol, fun = sphere_series, startn = 1)
+    return (c0-c1)*(1+((2*R)/(pi*x))*total)+c1
