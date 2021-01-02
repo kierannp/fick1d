@@ -14,14 +14,14 @@ This package is for simulating non-steady state diffusion according to Fick's Se
 
 ## Installation
 
-'''
+```
 git clone 
-'''
+```
 
 
 ## Usage
 
-'''
+```
 import fick1d
 import matplotlib.pyplot as plt
 
@@ -38,25 +38,23 @@ for i in range(len(times)):
     plt.plot(linspace(0,slab_thickness,1000),results[i],label = str(times[i]))
 plt.legend()
 plt.show()
-'''
+```
 
 ## Math Behind Models
 
 ### Ficks second law of diffusion in one-dimension
 
+This is the general pde that governs diffusion in solids. 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;C}{\partial&space;t}=D\frac{\partial^2&space;C}{\partial&space;x^2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;C}{\partial&space;t}=D\frac{\partial^2&space;C}{\partial&space;x^2}" title="\frac{\partial C}{\partial t}=D\frac{\partial^2 C}{\partial x^2}" /></a>
-
-
 
 ### Thin Film:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;c(x,t)=\frac{N}{\sqrt{4\pi&space;Dt}&space;}&space;exp({\frac{-x^2}{4Dt}})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;c(x,t)=\frac{N}{\sqrt{4\pi&space;Dt}&space;}&space;exp({\frac{-x^2}{4Dt}})" title="\large c(x,t)=\frac{N}{\sqrt{4\pi Dt} } exp({\frac{-x^2}{4Dt}})" /></a>
 
 ### Slab
+
 <a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\frac{c(x,t)-c_i}{c_f-c_i}=1-\frac{4}{\pi}&space;\sum_{n=0}^{&space;\infty}exp\left&space;(&space;-Dt(\frac{(2n&plus;1)\pi}{h})^2&space;\right&space;)\left&space;(&space;\frac{sin((2n&plus;1)\pi&space;x/h)}{2n&plus;1}&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\frac{c(x,t)-c_i}{c_f-c_i}=1-\frac{4}{\pi}&space;\sum_{n=0}^{&space;\infty}exp\left&space;(&space;-Dt(\frac{(2n&plus;1)\pi}{h})^2&space;\right&space;)\left&space;(&space;\frac{sin((2n&plus;1)\pi&space;x/h)}{2n&plus;1}&space;\right&space;)" title="\large \frac{c(x,t)-c_i}{c_f-c_i}=1-\frac{4}{\pi} \sum_{n=0}^{ \infty}exp\left ( -Dt(\frac{(2n+1)\pi}{h})^2 \right )\left ( \frac{sin((2n+1)\pi x/h)}{2n+1} \right )" /></a>
-
-
 
 ### Sphere
 
@@ -71,17 +69,15 @@ Non-steady state diffusion where u = C*r and f(r) is the intitial concentration 
 
 u = 0, r = 0, t > 0.
 
-u = aC_0, r = a, t > 0.
+u = a * C<sub>0<sub>, r = a, t > 0.
 
-u = rf(r), t = 0, 0 < r < a.
-
-
+u = r * f(r), t = 0, 0 < r < a.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C-C_1}{C_0-C_1}=1&plus;\frac{2a}{r\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n}sin(\frac{n\pi&space;r}{a})exp(-Dn^2\pi^2&space;t/a^2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C-C_1}{C_0-C_1}=1&plus;\frac{2a}{r\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n}sin(\frac{n\pi&space;r}{a})exp(-Dn^2\pi^2&space;t/a^2)" title="\frac{C-C_1}{C_0-C_1}=1+\frac{2a}{r\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n}sin(\frac{n\pi r}{a})exp(-Dn^2\pi^2 t/a^2)" /></a>
 
 Where,
-C_1: intital uniform concentration
-C_0: constant surface concentration
+C<sub>1<sub>: intital uniform concentration
+C<sub>0<sub>: constant surface concentration
 a: is radius of sphere
 
 With the limit as r->0 i.e. the concentration at the center of the sphere
@@ -100,20 +96,16 @@ Assuming radial diffusion,
 
 #### Boundary Conditions
 
-C = C_0, r = a, t >= 0.
+C = C<sub>0<sub>, r = a, t >= 0.
 
 C = f(r), 0 < r < a, t = 0.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" title="\frac{C-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D \alpha_n^2 t)J_0(r \alpha_n)}{\alpha_n J_1(a \alpha_n)}" /></a>
 
-
-
-
-
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C_x-C_0}{C_0-C_b}=1-erf(\frac{x}{2&space;\sqrt{Dt}&space;})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C_x-C_0}{C_0-C_b}=1-erf(\frac{x}{2&space;\sqrt{Dt}&space;})" title="\frac{C_x-C_0}{C_0-C_b}=1-erf(\frac{x}{2 \sqrt{Dt} })" /></a>
 
 ### Diffusion Couple
 
+### Sources for Math:
 
-### Sources:
 http://www-eng.lbl.gov/~shuman/NEXT/MATERIALS&COMPONENTS/Xe_damage/Crank-The-Mathematics-of-Diffusion.pdf
