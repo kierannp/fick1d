@@ -3,6 +3,11 @@
 
 This package is for simulating non-steady state diffusion according to Fick's Second law of diffusion in 1 dimension.
 
+## Installation
+
+```
+pip install fick1d
+```
 
 ## Current 1-D models supported:
 
@@ -12,11 +17,10 @@ This package is for simulating non-steady state diffusion according to Fick's Se
  - Diffusion Couple
  - Thin Film
 
-## Installation
 
 ## Example Usage
 
-```
+```python
 import fick1d
 import matplotlib.pyplot as plt
 
@@ -65,12 +69,13 @@ Assuming only radial diffusion,
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" title="\frac{C(t,x)-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D \alpha_n^2 t)J_0(r \alpha_n)}{\alpha_n J_1(a \alpha_n)}" /></a>
 
-
 ### Diffusion Couple Solution
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)-C_0}{C_0-C_b}=1-erf(\frac{x}{2&space;\sqrt{Dt}&space;})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)-C_0}{C_0-C_b}=1-erf(\frac{x}{2&space;\sqrt{Dt}&space;})" title="\frac{C(x,t)-C_0}{C_0-C_b}=1-erf(\frac{x}{2 \sqrt{Dt} })" /></a>
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-### Sources for Math:
+## Source for Math:
 
 http://www-eng.lbl.gov/~shuman/NEXT/MATERIALS&COMPONENTS/Xe_damage/Crank-The-Mathematics-of-Diffusion.pdf
