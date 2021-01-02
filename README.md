@@ -76,6 +76,10 @@ Assuming only radial diffusion,
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Author
+
+Kieran Nehil [github](https://github.com/kierannp)
+
 ## Source for Math:
 
 http://www-eng.lbl.gov/~shuman/NEXT/MATERIALS&COMPONENTS/Xe_damage/Crank-The-Mathematics-of-Diffusion.pdf
