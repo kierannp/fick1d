@@ -14,7 +14,7 @@ This package is for simulating non-steady state diffusion according to Fick's Se
 
 ## Installation
 
-## Usage
+## Example Usage
 
 ```
 import fick1d
