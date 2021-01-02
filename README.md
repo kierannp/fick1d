@@ -59,8 +59,8 @@ Assuming only radial diffusion,
 
 Where,
 
-C<sub>1<sub> : intital uniform concentration
-C<sub>0<sub> : constant surface concentration
+C<sub>1</sub> : intital uniform concentration
+C<sub>0</sub> : constant surface concentration
 a : is radius of sphere
 
 With the limit as r -> 0 i.e. the concentration at the center of the sphere
