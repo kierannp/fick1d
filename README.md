@@ -14,18 +14,13 @@ This package is for simulating non-steady state diffusion according to Fick's Se
 
 ## Installation
 
-```
-git clone 
-```
-
-
 ## Usage
 
 ```
 import fick1d
 import matplotlib.pyplot as plt
 
-times = [100,200,300] # 100,200,300 seconds after diffusion starts
+times = [100,200,300]               # 100,200,300 seconds after diffusion starts
 slab_thickness = .1                 # .1 meters thick slab
 diffusivity = 1.88e-5               # diffusivity of material to be simulated in m^2/s
 interface_concentration = .5        # concenttration at interface for slab in m^2/s
@@ -61,17 +56,9 @@ This is the general pde that governs diffusion in solids.
 If we restrict ourselves to cases in which the diffusion is radial, the diffusion
 equation for a constant diffusion coefficient takes the form,
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;\frac{\partial&space;C}{\partial&space;t}=D\left&space;(&space;\frac{\partial^2&space;C}{\partial&space;r^2}&plus;\frac{2}{r}&space;\frac{\partial&space;C}{\partial&space;r}\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;\frac{\partial&space;C}{\partial&space;t}=D\left&space;(&space;\frac{\partial^2&space;C}{\partial&space;r^2}&plus;\frac{2}{r}&space;\frac{\partial&space;C}{\partial&space;r}\right&space;)" title="\large \frac{\partial C}{\partial t}=D\left ( \frac{\partial^2 C}{\partial r^2}+\frac{2}{r} \frac{\partial C}{\partial r}\right )" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)&space;-&space;C_1}{C_0-C_1}=1&plus;\frac{2a}{\pi&space;r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left&space;(&space;\frac{n&space;\pi&space;r}{a}&space;\right&space;)exp\left&space;(&space;-Dn^2&space;\pi^2&space;t&space;/a^2\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)&space;-&space;C_1}{C_0-C_1}=1&plus;\frac{2a}{\pi&space;r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left&space;(&space;\frac{n&space;\pi&space;r}{a}&space;\right&space;)exp\left&space;(&space;-Dn^2&space;\pi^2&space;t&space;/a^2\right&space;)" title="\frac{C(t,x) - C_1}{C_0-C_1}=1+\frac{2a}{\pi r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left ( \frac{n \pi r}{a} \right )exp\left ( -Dn^2 \pi^2 t /a^2\right )" /></a>
 
-Non-steady state diffusion where u = C*r and f(r) is the intitial concentration distribution
 
-#### Boundary Counditions
-
-u = 0, r = 0, t > 0.
-
-u = a * C<sub>0<sub>, r = a, t > 0.
-
-u = r * f(r), t = 0, 0 < r < a.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C-C_1}{C_0-C_1}=1&plus;\frac{2a}{r\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n}sin(\frac{n\pi&space;r}{a})exp(-Dn^2\pi^2&space;t/a^2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C-C_1}{C_0-C_1}=1&plus;\frac{2a}{r\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n}sin(\frac{n\pi&space;r}{a})exp(-Dn^2\pi^2&space;t/a^2)" title="\frac{C-C_1}{C_0-C_1}=1+\frac{2a}{r\pi}\sum_{n=1}^{\infty}\frac{(-1)^n}{n}sin(\frac{n\pi r}{a})exp(-Dn^2\pi^2 t/a^2)" /></a>
 
@@ -89,22 +76,17 @@ With the limit as r->0 i.e. the concentration at the center of the sphere
 
 ### Cylinder
 
-
 Assuming radial diffusion,
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;C}{\partial&space;t}=\frac{1}{r}\frac{\partial&space;}{\partial&space;r}\left&space;(&space;rD\frac{\partial&space;C}{\partial&space;r}&space;\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;C}{\partial&space;t}=\frac{1}{r}\frac{\partial&space;}{\partial&space;r}\left&space;(&space;rD\frac{\partial&space;C}{\partial&space;r}&space;\right&space;)" title="\frac{\partial C}{\partial t}=\frac{1}{r}\frac{\partial }{\partial r}\left ( rD\frac{\partial C}{\partial r} \right )" /></a>
 
-#### Boundary Conditions
-
-C = C<sub>0<sub>, r = a, t >= 0.
-
-C = f(r), 0 < r < a, t = 0.
-
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" title="\frac{C-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D \alpha_n^2 t)J_0(r \alpha_n)}{\alpha_n J_1(a \alpha_n)}" /></a>
+
+
+### Diffusion Couple
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C_x-C_0}{C_0-C_b}=1-erf(\frac{x}{2&space;\sqrt{Dt}&space;})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C_x-C_0}{C_0-C_b}=1-erf(\frac{x}{2&space;\sqrt{Dt}&space;})" title="\frac{C_x-C_0}{C_0-C_b}=1-erf(\frac{x}{2 \sqrt{Dt} })" /></a>
 
-### Diffusion Couple
 
 ### Sources for Math:
 
