@@ -1,5 +1,7 @@
 # fick1d
-The purpose of this repo is to one day create a python module for simulating solid state diffusion in solid state.
+
+
+This package is for simulating non-steady state diffusion according to Fick's Second law of diffusion.
 
 
 ## Current 1-D models supported:
@@ -11,13 +13,32 @@ The purpose of this repo is to one day create a python module for simulating sol
  - Thin Film
 
 ## Installation
+
 '''
 git clone 
-
 '''
 
 
+## Usage
 
+'''
+import fick1d
+import matplotlib.pyplot as plt
+
+times = [100,200,300] # 100,200,300 seconds after diffusion starts
+slab_thickness = .1                 # .1 meters thick slab
+diffusivity = 1.88e-5               # diffusivity of material to be simulated in m^2/s
+interface_concentration = .5        # concenttration at interface for slab in m^2/s
+initial_concentration = 0           # initial concenttration for slab in m^2/s
+
+results = fick1d.slab.slab( times, slab_thickness, diffusivity, interface_concentration, initial_concentraton)
+
+for i in range(len(times)):
+    plt.title(fun)
+    plt.plot(linspace(0,slab_thickness,1000),results[i],label = str(times[i]))
+plt.legend()
+plt.show()
+'''
 
 ## Math Behind Models
 
