@@ -53,8 +53,7 @@ This is the general pde that governs diffusion in solids.
 
 ### Sphere Solution
 
-If we restrict ourselves to cases in which the diffusion is radial, the diffusion
-equation for a constant diffusion coefficient takes the form,
+Assuming only radial diffusion,
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)&space;-&space;C_1}{C_0-C_1}=1&plus;\frac{2a}{\pi&space;r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left&space;(&space;\frac{n&space;\pi&space;r}{a}&space;\right&space;)exp\left&space;(&space;-Dn^2&space;\pi^2&space;t&space;/a^2\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)&space;-&space;C_1}{C_0-C_1}=1&plus;\frac{2a}{\pi&space;r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left&space;(&space;\frac{n&space;\pi&space;r}{a}&space;\right&space;)exp\left&space;(&space;-Dn^2&space;\pi^2&space;t&space;/a^2\right&space;)" title="\frac{C(t,x) - C_1}{C_0-C_1}=1+\frac{2a}{\pi r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left ( \frac{n \pi r}{a} \right )exp\left ( -Dn^2 \pi^2 t /a^2\right )" /></a>
 
@@ -73,7 +72,7 @@ With the limit as r -> 0 i.e. the concentration at the center of the sphere
 
 ### Cylinder
 
-Assuming radial diffusion,
+Assuming only radial diffusion,
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D&space;\alpha_n^2&space;t)J_0(r&space;\alpha_n)}{\alpha_n&space;J_1(a&space;\alpha_n)}" title="\frac{C(t,x)-C_1}{C_0-C_1}=1-\frac{2}{a}\sum_{n=1}^{\infty}\frac{exp(-D \alpha_n^2 t)J_0(r \alpha_n)}{\alpha_n J_1(a \alpha_n)}" /></a>
 
