@@ -1,7 +1,7 @@
 from numpy import exp,pi,sin,array,linspace, zeros
 
-def sum_value(args, tol, fun, startn = 0):
-    n = startn
+def sum_value(args, tol, fun):
+    n = 1
     curr_sum = 0
     args['n'] = n
     while(True):
@@ -18,7 +18,7 @@ def sum_value(args, tol, fun, startn = 0):
             break
     return curr_sum
 
-def mean(T, R, D, c1, c0, tol = .00001):
+def mean(T, R, D, c1, c0, tol = 1e-8):
     ''' 
     T :list ints of times to sample
     R: Sphere Radius
@@ -33,10 +33,10 @@ def mean(T, R, D, c1, c0, tol = .00001):
     total = zeros((len(T)))
     for count_t,t in enumerate(T):
         dic = {'D' : D, 't' : t, 'R' : R}
-        total[count_t] = sum_value(dic, tol = tol, fun = sphere_mean, startn = 1)
+        total[count_t] = sum_value(dic, tol = tol, fun = sphere_mean)
     return (c0-c1)*(1 + 2*total) + c1
 
-def sphere( T, R, D, c1, c0, tol = .00001, rstep = 1000):     
+def sphere( T, R, D, c1, c0, tol = 1e-8, rstep = 1000):     
     ''' 
     T: list ints of times to sample
     R: Sphere Radius
@@ -47,11 +47,11 @@ def sphere( T, R, D, c1, c0, tol = .00001, rstep = 1000):
     tol : .1% auto tolerance 
     '''
     def sphere_series(d):
-        return ( (-1)**d['n']/d['n'] ) * sin((d['n']*pi*x)/d['R']) * exp(-d['D']*d['n']**2*pi**2*t/d['R']**2)
+        return ( ((-1)**d['n'])/d['n'] ) * sin((d['n']*pi*x)/d['R']) * exp((-d['D']*(d['n']**2)*(pi**2)*t)/(d['R']**2) )
     
     total = zeros((len(T),rstep))
     for count_t,t in enumerate(T):
         for count_x,x in enumerate(linspace(0,R,rstep)):
             dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
-            total[count_t,count_x] = sum_value(dic, tol = tol, fun = sphere_series, startn = 1)
-    return (c0-c1)*(1+((2*R)/(pi*x))*total)+c1
+            total[count_t,count_x] = sum_value(dic, tol = tol, fun = sphere_series) / x
+    return (c0-c1)*(1+((2*R)/(pi))*total)+c1
