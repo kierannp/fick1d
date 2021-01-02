@@ -57,12 +57,6 @@ Assuming only radial diffusion,
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)&space;-&space;C_1}{C_0-C_1}=1&plus;\frac{2a}{\pi&space;r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left&space;(&space;\frac{n&space;\pi&space;r}{a}&space;\right&space;)exp\left&space;(&space;-Dn^2&space;\pi^2&space;t&space;/a^2\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)&space;-&space;C_1}{C_0-C_1}=1&plus;\frac{2a}{\pi&space;r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left&space;(&space;\frac{n&space;\pi&space;r}{a}&space;\right&space;)exp\left&space;(&space;-Dn^2&space;\pi^2&space;t&space;/a^2\right&space;)" title="\frac{C(t,x) - C_1}{C_0-C_1}=1+\frac{2a}{\pi r}\sum_{\infty}^{n=1}\frac{(-1)^n}{n}sin\left ( \frac{n \pi r}{a} \right )exp\left ( -Dn^2 \pi^2 t /a^2\right )" /></a>
 
-Where,
-
-C<sub>1</sub> : intital uniform concentration
-C<sub>0</sub> : constant surface concentration
-a : is radius of sphere
-
 With the limit as r -> 0 i.e. the concentration at the center of the sphere
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)-C_1}{C_0-C_1}=1&plus;2\sum_{n=1}^{\infty}(-1)^nexp(-Dn^2\pi^2&space;t/a^2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)-C_1}{C_0-C_1}=1&plus;2\sum_{n=1}^{\infty}(-1)^nexp(-Dn^2\pi^2&space;t/a^2)" title="\frac{C(t,x)-C_1}{C_0-C_1}=1+2\sum_{n=1}^{\infty}(-1)^nexp(-Dn^2\pi^2 t/a^2)" /></a>
