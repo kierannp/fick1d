@@ -13,7 +13,12 @@ def thin_film(T, X, D, c0, b, xstep = 1000 ):
     total = np.zeros((len(T), xstep))
     for count_t,t in enumerate(T):
         for count_x,x in enumerate(np.linspace(-X,X,xstep)):
-            total[count_t,count_x]=c0*(b/2)*np.exp(-x**2/(4*D*t))/np.sqrt(np.pi*D*t)
+            try:
+                total[count_t,count_x] = c0*(b/2)*np.exp(-x**2/(4*D*t))/np.sqrt(np.pi*D*t)
+            except RuntimeWarning:
+                start = int(xstep/2 + (-b/2)*xstep)
+                stop = int(xstep/2 + (b/2)*xstep)
+                total[0,start:stop] = c0
     return total
 # def both_thin(T, Xlow, Xhi, D, c0, cb, b, xstep = 1000):
 #     tCrit=((2/b)**-2)/(np.pi*D)
