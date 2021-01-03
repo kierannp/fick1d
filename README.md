@@ -30,7 +30,11 @@ diffusivity = 1.88e-5               # diffusivity of material to be simulated in
 interface_concentration = .5        # concenttration at interface for slab in m^2/s
 initial_concentration = 0           # initial concenttration for slab in m^2/s
 
-results = fick1d.slab.slab( times, slab_thickness, diffusivity, interface_concentration, initial_concentraton)
+results = fick1d.slab.slab( times,
+                            slab_thickness, 
+                            diffusivity, 
+                            interface_concentration, 
+                            initial_concentraton)
 
 for i in range(len(times)):
     plt.title(fun)
