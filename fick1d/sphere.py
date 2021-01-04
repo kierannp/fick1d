@@ -51,7 +51,10 @@ def sphere( T, R, D, c1, c0, tol = 1e-8, rstep = 1000):
     
     total = zeros((len(T),rstep))
     for count_t,t in enumerate(T):
-        for count_x,x in enumerate(linspace(0,R,rstep)):
-            dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
-            total[count_t,count_x] = sum_value(dic, tol = tol, fun = sphere_series) / x
+        if t == 0:
+            total[0,rstep-1] = -pi/(2*R)
+        else:
+            for count_x,x in enumerate(linspace(0,R,rstep)):
+                dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
+                total[count_t,count_x] = sum_value(dic, tol = tol, fun = sphere_series) / x
     return (c0-c1)*(1+((2*R)/(pi))*total)+c1

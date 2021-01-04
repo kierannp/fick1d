@@ -37,9 +37,14 @@ def slab( T, h, D, ci, cf, Xoffset = 0, tol = 1e-8, xstep = 1000):
 
     total = zeros((len(T),xstep))
     for count_t,t in enumerate(T):
-        for count_x,x in enumerate(linspace(0,h,xstep)):
-            dic = {'D' : D, 't' : t, 'x' : x, 'h' : h, 'Xoffset' : Xoffset}
-            total[count_t,count_x] = sum_value(dic, tol = tol, fun = series_slab)
+        if t == 0:
+            total[0,:] = ci
+            total[0,0] = cf
+            total[0,xstep-1]
+        else:
+            for count_x,x in enumerate(linspace(0,h,xstep)):
+                dic = {'D' : D, 't' : t, 'x' : x, 'h' : h, 'Xoffset' : Xoffset}
+                total[count_t,count_x] = sum_value(dic, tol = tol, fun = series_slab)
     return (cf-ci)*(1-(4/pi)*total)+ci
 
 def mean( T, h, D, ci, cf, tol = 1e-8): 

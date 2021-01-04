@@ -44,7 +44,10 @@ def cylinder( T, R, D, c1, c0, tol = 1e-8, rstep = 1000):
     roots = jn_zeros(0, 100) / R
 
     for count_t,t in enumerate(T):
-        for count_x,x in enumerate(linspace(0,R,rstep)):
-            dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
-            total[count_t,count_x] = sum_value(dic, tol = tol, fun = cylinder_series, roots = roots)
+        if t == 0:
+            total[0,rstep-1] = sqrt(R)/2
+        else:
+            for count_x,x in enumerate(linspace(0,R,rstep)):
+                dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
+                total[count_t,count_x] = sum_value(dic, tol = tol, fun = cylinder_series, roots = roots)
     return (c0-c1)*(1 - (2/sqrt(R))*total)+c1

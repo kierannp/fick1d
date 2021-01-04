@@ -1,9 +1,4 @@
-
-import fick1d.slab as slab
-import fick1d.couple as couple
-import fick1d.sphere as sphere
-import fick1d.thin_film as thin_film
-import fick1d.cylinder as cylinder
+import fick1d
 import matplotlib.pyplot as plt
 from numpy import exp,pi,sin,array,linspace, zeros
 from seaborn import set
@@ -30,21 +25,21 @@ def plot_results( result, fun, size, T, symx = False):
 
 class TestClass:
     def test_sphere(self):
-        results = sphere.sphere( t, x, d, 0, 0.1)
+        results = fick1d.sphere.sphere( t, x, d, 0, 0.1)
         plot_results(results,"sphere.sphere", x, t)
-        results = sphere.mean(t, x, d, .1, 0)
+        results = fick1d.sphere.mean(t, x, d, .1, 0)
     def test_slab(self):
-        results = slab.slab(t, x, d, .8, 0)
+        results = fick1d.slab.slab(t, x, d, .8, 0)
         plot_results(results,"slab.slab", x, t)
-        results = slab.mean(t, x, d, .8, 0)
+        results = fick1d.slab.mean(t, x, d, .8, 0)
     def test_cylinder(self):
-        results = cylinder.cylinder(t, x, d, 0, .5)
+        results = fick1d.cylinder.cylinder(t, x, d, 0, .5)
         plot_results(results, "cylinder.cylinder", x, t)
     def test_couple(self):
-        results = couple.couple(t, d, -.5, .5, x)
+        results = fick1d.couple.couple(t, d, -.5, .5, x)
         plot_results(results, "couple.couple", .5, t, symx = True)
     def test_thin_film(self):
-        results = thin_film.thin_film(t, x, d, 1, .01)
-        plot_results(results,"thin_film.thin_film", 2, t, symx = True)
+        results = fick1d.thin_film.thin_film(t, x, d, 1, .01)
+        plot_results(results,"thin_film.thin_film", x, t, symx = True)
         # thin_film.early_thin_film([0,10,100,1000], -.5, .5, 1, .2, d)
         # thin_film.both_thin()
