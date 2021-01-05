@@ -71,7 +71,7 @@ With the limit as r -> 0 i.e. the concentration at the center of the sphere
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\frac{C(t,x)-C_1}{C_0-C_1}=1&plus;2\sum_{n=1}^{\infty}(-1)^nexp(-Dn^2\pi^2&space;t/a^2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{C(t,x)-C_1}{C_0-C_1}=1&plus;2\sum_{n=1}^{\infty}(-1)^nexp(-Dn^2\pi^2&space;t/a^2)" title="\frac{C(t,x)-C_1}{C_0-C_1}=1+2\sum_{n=1}^{\infty}(-1)^nexp(-Dn^2\pi^2 t/a^2)" /></a>
 
-![Sphere](imgs/sphere.sphere.png)
+![Sphere](imgs/sphere.gif)
 
 ### Cylinder Solution
 
