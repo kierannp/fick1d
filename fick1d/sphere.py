@@ -48,13 +48,18 @@ def sphere( T, R, D, c1, c0, tol = 1e-8, rstep = 1000):
     '''
     def sphere_series(d):
         return ( ((-1)**d['n'])/d['n'] ) * sin((d['n']*pi*x)/d['R']) * exp((-d['D']*(d['n']**2)*(pi**2)*t)/(d['R']**2) )
-    
+    def sphere_center(d):
+        return ((-1)**d['n'] * exp((-d['D']*(d['n']**2)*(pi**2)*t)/(d['R']**2) ))
     total = zeros((len(T),rstep))
     for count_t,t in enumerate(T):
         if t == 0:
-            total[0,rstep-1] = -pi/(2*R)
+            total[0,rstep-1] = c0
         else:
             for count_x,x in enumerate(linspace(0,R,rstep)):
-                dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
-                total[count_t,count_x] = sum_value(dic, tol = tol, fun = sphere_series) / x
-    return (c0-c1)*(1+((2*R)/(pi))*total)+c1
+                if x ==0:
+                    dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
+                    total[count_t,0] = (c0-c1)*(1 + 2*sum_value(dic, tol = tol, fun = sphere_center)) + c1
+                else:
+                    dic = {'D' : D, 't' : t, 'x' : x, 'R' : R}
+                    total[count_t,count_x] = (c0-c1)*(1 + ((2*R)/(pi))*sum_value(dic, tol = tol, fun = sphere_series) / x) + c1
+    return total
